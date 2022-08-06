@@ -1,3 +1,3 @@
 
-FROM kcbio/rstudiovelo
+FROM kcbio/rstudiovelo:first
 
