@@ -21,6 +21,12 @@ RUN apt-get update --yes && apt-get install --no-install-recommends --yes \
   libarmadillo-dev
 
 RUN \
+    apt-get install -y --no-install-recommends libxt6
+    
+RUN \
+    apt-get install libcurl4-openssl-dev libssl-dev    
+
+RUN \
   R -e 'chooseCRANmirror(ind=52); install.packages(c("devtools", "Rcpp","RcppArmadillo", "Matrix", "mgcv", "abind","igraph","h5","Rtsne","cluster","data.table", "Seurat", "R.utils", "rmarkdown", "knitr"))'
 
 RUN \
@@ -38,5 +44,4 @@ RUN \
   echo '.libPaths(c("~/R/x86_64-pc-linux-gnu-library/4.1/", .libPaths()))' > .Rprofile && \
   R -e 'devtools::install_local("~/velocyto.R/",dep=T,upgrade_dependencies=F)'
 
- RUN \
-    apt-get install -y --no-install-recommends libxt6
+
